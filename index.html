@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Condo Fit :: Saúde a um passo!</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDKw1I9ZlI-piCBp2zXSuviBDVRjju-aYI&callback=initMap"></script>
+	<link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+	<script type="text/javascript">
+		var myCenter = new google.maps.LatLng(-19.9167,-43.9345);
+
+		function initialize() {
+			var mapProp = {center:myCenter, zoom:12, scrollwheel:false,
+				draggable:false, mapTypeId:google.maps.MapTypeId.ROADMAP};
+
+			var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
+			var marker = new google.maps.Marker({position:myCenter});
+
+			marker.setMap(map);
+		}
+		
+		google.maps.event.addDomListener(window,'load',initialize);
+
+		$(document).ready(function() {
+			$(".navbar a, footer a[href='#myPage']").on('click',function(event) {
+				if(this.hash !== "") {
+					event.preventDefault();
+
+					var hash = this.hash;
+
+					$('html, body').animate({scrollTop: $(hash).offset().top},900,
+						function() { window.location.hash = hash; });
+				}
+			});
+
+			$(window).scroll(function() { $(".slideanim").each(function() {
+				var pos = $(this).offset().top;
+				var winTop = $(window).scrollTop();
+
+				if(pos < winTop + 600) $(this).addClass("slide");
+			}); });
+		});
+	</script>
+</head>
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+	<nav class="navbar navbar-default navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a href="#myPage"> <img src="img/logo.png" /> </a>
+			</div>
+			<div class="collapse navbar-collapse" id="myNavbar" style="margin-top:13px;">
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="#about">QUEM SOMOS</a></li>
+					<li><a href="#benefits">BENEFÍCIOS</a></li>
+					<li><a href="#services">SERVIÇOS</a></li>
+					<li><a href="#contact">CONTATO</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<div class="jumbotron text-center">
+		<img src="img/apresentacao.jpg" style="width:60%;" />
+	</div>
+
+	<div id="about" class="container-fluid">
+	  <br><br><br>
+	  <div class="row">
+	    <div class="col-sm-10">
+	      <h2>Quem Somos</h2><br>
+	      <h4>A Condo Fit Assessoria & Gestão Esportiva é uma empresa que atua em academias de condomínio. Com qualidade e segurança promovemos a administração, organização e gerenciamento deste espaço para os condôminos. Nosso atendimento é realizado por professores criteriosamente selecionados, formados em Educação Física e legalmente credenciados pelo CREF (Conselho Regional de Educação Física).</h4><br>
+	      <p>O planejamento organizacional das atividades físicas visa atender às necessidades específicas do condomínio, sendo portanto, personalizado. Para unir a qualidade de vida e economia, incentivamos a prática de atividades físicas nos espaços das academias que já pertencem aos moradores. Assim, toda a família se beneficia desta prática saudavel, sem sair da segurança e comodidade de sua casa.</p><br>
+	    </div>
+	    <div class="col-sm-2">
+			<br><br><br><br>
+			<span class="glyphicon glyphicon-home" style="font-size:150px;"></span>
+	    </div>
+	  </div>
+	</div>
+	<div class="container-fluid" style="background-color:#f6f6f6;">
+	  <div class="row">
+	    <div class="col-sm-2">
+	      <br>
+	      <span class="glyphicon glyphicon-globe" style="font-size:150px;"></span>
+	    </div>
+	    <div class="col-sm-10">
+	      <h2>Nossos Valores</h2><br>
+	      <h4>A <strong>Condo Fit</strong> preza pelo respeito e eficiência na execução dos seus serviços. Para garantir a confiança e satisfação de seus clientes, incentivamos à pratica de atividade física regular, mudança de hábitos e qualidade de vida.</h4><br>
+	    </div>
+	  </div>
+	  <br>
+	  <div id="myCarousel" class="carousel slide text-center" data-ride="carousel">
+	      <ol class="carousel-indicators">
+		      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+		      <li data-target="#myCarousel" data-slide-to="1"></li>
+		      <li data-target="#myCarousel" data-slide-to="2"></li>
+	      </ol>
+	      <br>
+
+	      <div class="carousel-inner" role="listbox" style="font-style:italic;">
+		      <div class="item active">
+		        <h4>"Qualidade de vida e economia!"</h4>
+		      </div>
+		      <div class="item">
+		        <h4>"Comodidade e segurança!"</h4>
+		      </div>
+		      <div class="item">
+		        <h4>"Saúde à um passo!"</h4>
+		      </div>
+	      </div>
+			
+	      <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev" style="background-image:none;">
+		      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+		      <span class="sr-only">Previous</span>
+	      </a>
+	      <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next" style="background-image:none;">
+		      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+		      <span class="sr-only">Next</span>
+	      </a>
+	  </div>
+	  <br>
+	</div>
+
+	<div id="benefits" class="container-fluid">
+		<br><br><br>
+		<div class="text-center">
+			<h2>Benefícios</h2><br>
+		</div>
+		<div class="row slideanim">
+			<div class="col-sm-6 col-xs-12">
+				<div class="panel panel-default">
+					<div class="panel-heading text-center">
+						<h2>Condomínio</h1>
+					</div>
+					<div class="panel-body">
+						<p><span class="glyphicon glyphicon-ok-sign"></span> A administração destes espaços leva uma melhor manutenção e conservação dos mesmos (considerando que a falta de utilização ou a má utilização pode trazer prejuízos aos aparelhos).</p>
+						<br>
+						<p><span class="glyphicon glyphicon-ok-sign"></span> Valorização do imóvel.</p>
+						<br>
+						<p><span class="glyphicon glyphicon-ok-sign"></span> Melhora da satisfação dos condôminos.</p>
+					</div>
+					<div class="panel-footer text-center">
+						<img src="img/beneficios.jpg" style="height:110px;" />
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-6 col-xs-12">
+				<div class="panel panel-default">
+					<div class="panel-heading text-center">
+						<h2>Moradores</h1>
+					</div>
+					<div class="panel-body">
+						<p><span class="glyphicon glyphicon-ok-sign"></span> Aproveitamento da academia e do espaço do condomínio.</p>
+						<p><span class="glyphicon glyphicon-ok-sign"></span> Viabilizar o acesso à atividade física para toda família.</p>
+						<p><span class="glyphicon glyphicon-ok-sign"></span> Contribuir para uma qualidade de vida, saúde, e boa forma.</p>
+						<p><span class="glyphicon glyphicon-ok-sign"></span> Comodidade, otimização do tempo e segurança.</p>
+						<p><span class="glyphicon glyphicon-ok-sign"></span> Economia de custos com academias externas e deslocamentos.</p>
+					</div>
+					<div class="panel-footer text-center">
+						<img src="img/beneficios-rodape-direita.jpg" style="height:110px;" />
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<br><br><br>
+
+	<div id="services" class="container-fluid text-center" style="background-color:#f6f6f6;">
+		<h2>Serviços</h2><br>
+		<div class="row slideanim">
+			<div class="col-sm-4">
+				<img src="img/servicos-assessoria.jpg" style="width:70%;" />
+				<h4>Assessoria e Gestão</h4>
+				<p>da academia do condomínio</p>
+			</div>
+			<div class="col-sm-4">
+				<img src="img/servicos-professores.jpg" style="width:45%;" />
+				<h4>Professores</h4>
+				<p>formados e credenciados</p>
+			</div>
+			<div class="col-sm-4">
+				<img src="img/servicos-aulas-coletivas-1.jpg" style="width:22%;" />
+				<img src="img/servicos-aulas-coletivas-2.jpg" style="width:22%;" />
+				<br>
+				<img src="img/servicos-aulas-coletivas-3.jpg" style="width:22%;" />
+				<img src="img/servicos-aulas-coletivas-4.jpg" style="width:22%;" />
+				<h4>Aulas Coletivas<sup>*</sup></h4>
+				<p>Esporte, dança, ginastica, funcional, natação e outros.</p>
+			</div>
+		</div>
+		<br><br>
+		<div class="row slideanim">
+			<div class="col-sm-4">
+				<img src="img/servicos-avaliacao-fisica.jpg" style="width:50%;" />
+				<h4>Avaliação Física</h4>
+			</div>
+			<div class="col-sm-4">
+				<img src="img/servicos-personal-trainer.jpg" style="width:50%;" />
+				<h4>Personal Trainer</h4>
+			</div>
+			<div class="col-sm-4">
+				<img src="img/servicos-fisioterapeuta.jpg" style="width:50%;" />
+				<h4>Fisioterapeuta</h4>
+			</div>
+		</div>
+		<br><br>
+		<div class="row slideanim">
+			<div class="col-sm-4">
+				<img src="img/servicos-psicologo.jpg" style="width:50%;" />
+				<h4>Psicólogo</h4>
+			</div>
+			<div class="col-sm-4">
+				<img src="img/servicos-nutricionista.jpg" style="width:50%;" />
+				<h4>Nutricionista</h4>
+			</div>
+			<div class="col-sm-4">
+				<img src="img/servicos-massoterapeuta.jpg" style="width:50%;" />
+				<h4>Massoterapeuta</h4>
+			</div>
+		</div>
+		<div class="row slideanim text-center"> <div class="col-sm-12">
+			<br><br>
+			<sub>* As aulas e modalidades são disponibilizadas de acordo com os pacotes de serviços contratados.</sub>
+			<br><br>
+		</div> </div>
+	</div>
+
+	<div id="contact" class="container-fluid bg-grey">
+		<br><br><br>
+		<h2 class="text-center">Contato</h2><br>
+		<div class="row">
+			<div class="col-sm-2"></div>
+			<div class="col-sm-3">
+				<p><span class="glyphicon glyphicon-map-marker"></span> Belo Horizonte, BR</p>
+				<p><span class="glyphicon glyphicon-phone"></span> +55 31 98790 4691</p>
+				<p><span class="glyphicon glyphicon-phone"></span> +55 31 97506 8169</p>
+				<p><span class="glyphicon glyphicon-envelope"></span> contato@saudeaumpasso.com.br</p>
+				<br><p> <strong>Agende uma visita!</strong> </p>
+			</div>
+			<div class="col-sm-5 slideanim"> <div class="row">
+				<div id="googleMap" style="height:300px; width:100%;"></div>
+			</div> </div>
+			<div class="col-sm-2"></div>
+		</div>
+	</div>
+
+	<footer class="container-fluid text-center">
+		<br><br>
+		<a href="#myPage" title="To Top">
+			<span class="glyphicon glyphicon-chevron-up"></span>
+		</a>
+		<p>Condo Fit :: Saúde a um passo!</p>
+	</footer>
+</body>
+</html>
